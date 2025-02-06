@@ -1,6 +1,6 @@
 <?php 
 
-require_once "./core/database.php";
+include_once 'C:/laragon/www/cabinetmedical/core/database.php';
 class User{
     
     protected  $id_user;
@@ -49,40 +49,37 @@ class User{
     public function setPassword( $Password){
         $this->Password = password_hash($Password,PASSWORD_DEFAULT);
     }
-                       
-    public function register($nom,$prenom, $email ,$password, $role) {
-        try {
 
-            $allowedRoles = ['patient', 'medecin'];
-            if (!in_array($role, $allowedRoles)) {
-                throw new Exception("Invalid role provided.");
+        public function register($nom, $prenom, $email, $password, $role) {
+            try {
+                $allowedRoles = ['patient', 'medecin'];
+                if (!in_array($role, $allowedRoles)) {
+                    throw new Exception("Invalid role provided.");
+                }
+                $this->db->beginTransaction();
+    
+                $password = password_hash($password, PASSWORD_BCRYPT);
+    
+                $sqlUser = "INSERT INTO users (nom, prenom, email, password, role) VALUES (:nom, :prenom, :email, :password, :role)";
+                $stmtUser = $this->db->prepare($sqlUser);
+                $stmtUser->execute([
+                    ':nom' => $nom,
+                    ':prenom' => $prenom,
+                    ':email' => $email,
+                    ':password' => $password,
+                    ':role' => $role
+                ]);
+    
+                $userId = $this->db->lastInsertId();
+    
+                $this->db->commit();
+                return $userId;
+            } catch (Exception $e) {
+                $this->db->rollBack();
+                throw new Exception("Registration failed. Please try again.");
             }
-            $this->db->beginTransaction();
-
-            // $role = ($role === 'user') ? 'user' : 'visiteur';
-            $password = password_hash($password, PASSWORD_BCRYPT);
-
-            $sqlUser = "INSERT INTO users (nom , prenom , email, password, Role) VALUES ( :nom , :prenom ,:email, :password, :role )";
-            $stmtUser = $this->db->prepare($sqlUser);
-            $stmtUser->execute([
-                ':nom' => $nom,
-                ':prenom' => $prenom,
-                ':email' => $email,
-                ':password' => $password,
-                ':role' => $role
-
-            ]);
-
-
-            $userId = $this->db->lastInsertId();
-
-            $this->db->commit();
-            return $userId;
-        } catch (Exception $e) {
-            $this->db->rollBack();
-            throw new Exception("Registration failed. Please try again.");
         }
-    }
+ 
 
     public function login($email, $password) {
         try {

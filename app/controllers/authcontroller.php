@@ -1,8 +1,8 @@
 
 <?php
 
-include_once '../models/users.php';
-include_once './core/database.php';
+include_once 'C:/laragon/www/cabinetmedical/app/models/users.php';
+include_once 'C:/laragon/www/cabinetmedical/core/database.php';
 
 
 class Usercontroller{
@@ -14,6 +14,7 @@ class Usercontroller{
 
 
     public function registercontroller() {
+        echo 'registercontroller is working';
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $nom = $_POST['nom'];
             $prenom = $_POST['prenom'];
@@ -22,15 +23,13 @@ class Usercontroller{
             $role = $_POST['role'];
             }
             try {
-                $userId = $this->user->register($nom, $prenom, $email, $password, $role);
+              $this->user->register($nom, $prenom, $email, $password, $role);
                 header('Location:../views/auth/connecter.php');
                 exit();
             } catch (Exception $e) {
                 echo "Erreur : " . $e->getMessage();
-            }
-         
-    }
-    
+            }    
+    } 
     public function logincontroller(){
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $email = $_POST['email'];
@@ -46,8 +45,8 @@ class Usercontroller{
                 if ($user['role'] === 'patient') {
         
                     header('Location:C:../views/patients/dashbordpatients.php');
-        
-                } else if( $user['role'] === 'medecin') {
+         
+                 } else if( $user['role'] === 'medecin') {
         
                     header('Location:../views/medcins/dashbordmedcins.php');
         

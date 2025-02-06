@@ -1,6 +1,10 @@
 
+<?php
+require_once '../app/controllers/authcontroller.php';
 
-
+  $dbConnection = new DbConnection();
+   $db = $dbConnection->getConnection();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,7 +13,6 @@
     <title>Register</title>
     <link rel="icon" href="../assets/gym.png"/>
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- AOS Animation CDN -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 </head>
@@ -32,7 +35,7 @@
         <div class="w-full mt-20 mr-0 mb-0 ml-0 relative z-10 max-w-2xl lg:mt-0 lg:w-5/12">
             <div class="flex flex-col items-start justify-start pt-10 pr-10 pb-10 pl-10 bg-white shadow-2xl rounded-xl relative z-10">
 
-                <form method="POST" action="index.php?action=register" class="w-full mt-6 mr-0 mb-0 ml-0 relative space-y-8" enctype="multipart/form-data">
+                <form method="POST" action="/cabinetmedical/public/register" class="w-full mt-6 mr-0 mb-0 ml-0 relative space-y-8" enctype="multipart/form-data">
                     <!-- Name -->
                     <div class="relative">
                         <p class="bg-white pt-0 pr-2 pb-0 pl-2 -mt-3 mr-0 mb-0 ml-2 font-medium text-gray-600 absolute">Name</p>
@@ -69,7 +72,7 @@
                     </div>
 
                     <div class="relative">
-                        <p class="text-center font-medium text-gray-600">Already have an account, <a href="index.php?action=login" class="text-green-600 font-bold">Login</a></p>
+                        <p class="text-center font-medium text-gray-600">Already have an account, <a href="/cabinetmedical/public/login" class="text-green-600 font-bold">Login</a></p>
                     </div>
 
                 </form>
