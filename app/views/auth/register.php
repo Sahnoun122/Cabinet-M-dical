@@ -1,7 +1,4 @@
-<?php
-require_once "./core/database.php";
 
-?>
 
 
 <!DOCTYPE html>
@@ -35,14 +32,14 @@ require_once "./core/database.php";
         <div class="w-full mt-20 mr-0 mb-0 ml-0 relative z-10 max-w-2xl lg:mt-0 lg:w-5/12">
             <div class="flex flex-col items-start justify-start pt-10 pr-10 pb-10 pl-10 bg-white shadow-2xl rounded-xl relative z-10">
 
-                <form method="POST" action="register.php" class="w-full mt-6 mr-0 mb-0 ml-0 relative space-y-8" enctype="multipart/form-data">
+                <form method="POST" action="index.php?action=register" class="w-full mt-6 mr-0 mb-0 ml-0 relative space-y-8" enctype="multipart/form-data">
                     <!-- Name -->
                     <div class="relative">
                         <p class="bg-white pt-0 pr-2 pb-0 pl-2 -mt-3 mr-0 mb-0 ml-2 font-medium text-gray-600 absolute">Name</p>
                         <input type="text" id="nom" name="nom" placeholder="nom" class="border placeholder-gray-400 focus:outline-none focus:border-black w-full pt-4 pr-4 pb-4 pl-4 mt-2 mr-0 mb-0 ml-0 text-base block bg-white border-gray-300 rounded-md"/>
                     </div>
 
-                    <!-- Username -->
+                    <!-- prenom -->
                     <div class="relative">
                         <p class="bg-white pt-0 pr-2 pb-0 pl-2 -mt-3 mr-0 mb-0 ml-2 font-medium text-gray-600 absolute">Prenom</p>
                         <input type="text" id="prenom" name="prenom" placeholder="prenom" class="border placeholder-gray-400 focus:outline-none focus:border-black w-full pt-4 pr-4 pb-4 pl-4 mt-2 mr-0 mb-0 ml-0 text-base block bg-white border-gray-300 rounded-md"/>
@@ -52,28 +49,19 @@ require_once "./core/database.php";
                     <div class="relative">
                         <p class="bg-white pt-0 pr-2 pb-0 pl-2 -mt-3 mr-0 mb-0 ml-2 font-medium text-gray-600 absolute">Email</p>
                         <input type="email" id="email" name="email" placeholder="Example123@gmail.com" class="border placeholder-gray-400 focus:outline-none focus:border-black w-full pt-4 pr-4 pb-4 pl-4 mt-2 mr-0 mb-0 ml-0 text-base block bg-white border-gray-300 rounded-md"/>
-                    </div>
-
-                    <!-- Phone -->
-                
+                    </div>                
                     <!-- Role -->
                     <div class="relative">
                         <p class="bg-white pt-0 pr-2 pb-0 pl-2 -mt-3 mr-0 mb-0 ml-2 font-medium text-gray-600 absolute">Role</p>
                         <select name="role" id="role" class="border focus:outline-none focus:border-black w-full pt-4 pr-4 pb-4 pl-4 mt-2 mr-0 mb-0 ml-0 text-base block bg-white border-gray-300 rounded-md">
-                            <option value="visiteur" class="text-gray-400">Visiteur</option>
-                            <option value="user" class="text-gray-400">Artiste</option>
+                            <option value="patient" class="text-gray-400">patient</option>
+                            <option value="medecin" class="text-gray-400">medecin</option>
                         </select>
-                    </div>
-
-                    <!-- photos-->
-                    <div class="relative">
-                        <p class="bg-white pt-0 pr-2 pb-0 pl-2 -mt-3 mr-0 mb-0 ml-2 font-medium text-gray-600 absolute">Photos</p>
-                        <input type="file" id="PROFILE" name="PROFILE" accept="uploade/" placeholder=""  class="border placeholder-gray-400 focus:outline-none focus:border-black w-full pt-4 pr-4 pb-4 pl-4 mt-2 mr-0 mb-0 ml-0 text-base block bg-white border-gray-300 rounded-md"/>
-                    </div>
+                    </div>                 
 
                     <div class="relative">
                         <p class="bg-white pt-0 pr-2 pb-0 pl-2 -mt-3 mr-0 mb-0 ml-2 font-medium text-gray-600 absolute">Email</p>
-                        <input type="password" id="Motdepasse" name="Motdepasse" placeholder="............." class="border placeholder-gray-400 focus:outline-none focus:border-black w-full pt-4 pr-4 pb-4 pl-4 mt-2 mr-0 mb-0 ml-0 text-base block bg-white border-gray-300 rounded-md"/>
+                        <input type="password" id="password" name="password" placeholder="............." class="border placeholder-gray-400 focus:outline-none focus:border-black w-full pt-4 pr-4 pb-4 pl-4 mt-2 mr-0 mb-0 ml-0 text-base block bg-white border-gray-300 rounded-md"/>
                     </div>
                     <div class="relative">
                         <button type="submit" name="submit" class="w-full inline-block pt-4 pr-5 pb-4 pl-5 text-xl font-medium text-center text-white bg-green-500
@@ -81,7 +69,7 @@ require_once "./core/database.php";
                     </div>
 
                     <div class="relative">
-                        <p class="text-center font-medium text-gray-600">Already have an account, <a href="connecter.php" class="text-green-600 font-bold">Login</a></p>
+                        <p class="text-center font-medium text-gray-600">Already have an account, <a href="index.php?action=login" class="text-green-600 font-bold">Login</a></p>
                     </div>
 
                 </form>

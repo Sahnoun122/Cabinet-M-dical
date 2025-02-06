@@ -25,7 +25,7 @@ class User{
     public function getPrenom(){
         return $this->prenom;
     } 
-
+  
     public function getEmail(){
         return $this->email;
     } 
@@ -49,11 +49,7 @@ class User{
     public function setPassword( $Password){
         $this->Password = password_hash($Password,PASSWORD_DEFAULT);
     }
-
-
-
-
-    
+                       
     public function register($nom,$prenom, $email ,$password, $role) {
         try {
 
