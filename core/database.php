@@ -18,9 +18,11 @@ class DbConnection {
             } catch (PDOException $e) {
                 echo 'Connection failed: ' . $e->getMessage();
                 exit;
+
             }
         } else {
             echo "Connected correctly"; 
+            
         }
     }
 
@@ -31,6 +33,6 @@ class DbConnection {
 
 $db = new DbConnection();
 
-var_dump($db);
+
 
 ?>

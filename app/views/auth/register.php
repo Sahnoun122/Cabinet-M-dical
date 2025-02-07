@@ -1,9 +1,9 @@
 
 <?php
-require_once '../app/controllers/authcontroller.php';
+// require_once '../app/controllers/authcontroller.php';
 
-  $dbConnection = new DbConnection();
-   $db = $dbConnection->getConnection();
+//   $dbConnection = new DbConnection();
+//    $db = $dbConnection->getConnection();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -72,7 +72,7 @@ require_once '../app/controllers/authcontroller.php';
                     </div>
 
                     <div class="relative">
-                        <p class="text-center font-medium text-gray-600">Already have an account, <a href="/cabinetmedical/public/login" class="text-green-600 font-bold">Login</a></p>
+                        <p class="text-center font-medium text-gray-600">Already have an account, <a href="index.php?action=loginViews"  class="text-green-600 font-bold">Login</a></p>
                     </div>
 
                 </form>

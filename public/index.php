@@ -10,16 +10,19 @@
   require_once '../app/controllers/authcontroller.php';
 
 
-  $route = new Router();
-  $url = trim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), '/');
-  $segments = explode('/', $url);
-  $controller = $segments[2] ;
-  echo $controller;
-  $lastSegment = end($segments); 
-  if(isset($controller)){
-       switch($controller){
+// Assuming you have already set up your PDO connection
+
+$route = new Router($db);
+$url = trim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), '/');
+$segments = explode('/', $url);
+$controller = $segments[2];
+echo $controller;
+$lastSegment = end($segments);
+
+if (isset($controller)) {
+    switch ($controller) {
         case 'register':
-            $user = new Usercontroller();
+            $user = new Usercontroller($db);
             $user->registercontroller();
             echo 'register';
             break;
@@ -27,11 +30,17 @@
             require_once("C:/laragon/www/cabinetmedical/app/views/auth/register.php");
             echo 'registerView';
             break;
-            
-            case 'login':
-                echo 'login';
+        case 'login':
+            $user = new Usercontroller($db);
+            $user->logincontroller();
+            echo 'login';
             break;
-            
-       }
+
+            case 'loginViews':
+                require_once("C:/laragon/www/cabinetmedical/app/views/auth/connecter.php");
+                echo 'loginViews';
+                break;
     }
+}
+
 ?>

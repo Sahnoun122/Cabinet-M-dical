@@ -10,12 +10,13 @@ class User{
     protected  $Password;
     protected $role;
 
-    protected $db;
-        
-    public function __construct($db)
-    {
+    private $db;
+    
+    public function __construct($db) {
         $this->db = $db;
     }
+
+
     public function getIduser(){
         return $this->id_user;
     }
@@ -50,36 +51,62 @@ class User{
         $this->Password = password_hash($Password,PASSWORD_DEFAULT);
     }
 
+    
+    
+    
         public function register($nom, $prenom, $email, $password, $role) {
             try {
+                // Vérification des rôles autorisés
                 $allowedRoles = ['patient', 'medecin'];
                 if (!in_array($role, $allowedRoles)) {
-                    throw new Exception("Invalid role provided.");
+                    throw new InvalidArgumentException("Rôle invalide fourni.");
                 }
+    
+                // Vérification de l'adresse email
+                if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                    throw new InvalidArgumentException("Adresse email invalide.");
+                }
+    
+                // Hachage du mot de passe
+                $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
+    
+                // Début de la transaction
                 $this->db->beginTransaction();
     
-                $password = password_hash($password, PASSWORD_BCRYPT);
-    
+                // Insertion de l'utilisateur
                 $sqlUser = "INSERT INTO users (nom, prenom, email, password, role) VALUES (:nom, :prenom, :email, :password, :role)";
                 $stmtUser = $this->db->prepare($sqlUser);
                 $stmtUser->execute([
                     ':nom' => $nom,
                     ':prenom' => $prenom,
                     ':email' => $email,
-                    ':password' => $password,
+                    ':password' => $hashedPassword,
                     ':role' => $role
                 ]);
     
+                // Récupération de l'ID de l'utilisateur
                 $userId = $this->db->lastInsertId();
     
+                // Validation de la transaction
                 $this->db->commit();
+    
                 return $userId;
-            } catch (Exception $e) {
+    
+            } catch (InvalidArgumentException $e) {
+                // Rollback de la transaction en cas d'argument invalide
                 $this->db->rollBack();
-                throw new Exception("Registration failed. Please try again.");
+                throw new Exception("Échec de l'inscription : " . $e->getMessage());
+            } catch (PDOException $e) {
+                // Rollback de la transaction en cas d'erreur PDO
+                $this->db->rollBack();
+                throw new Exception("Erreur de la base de données : " . $e->getMessage());
+            } catch (Exception $e) {
+                // Rollback de la transaction pour toute autre exception
+                $this->db->rollBack();
+                throw new Exception("Échec de l'inscription. Veuillez réessayer.");
             }
         }
- 
+    
 
     public function login($email, $password) {
         try {

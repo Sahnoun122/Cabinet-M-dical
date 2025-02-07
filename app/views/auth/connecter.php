@@ -1,7 +1,3 @@
-<?php
-require_once "./core/database.php";
-
-?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -36,7 +32,7 @@ require_once "./core/database.php";
             <div class="flex flex-col items-start justify-start pt-10 pr-10 pb-10 pl-10 bg-white shadow-2xl rounded-xl
                 relative z-10">
 
-                <form method="POST" action="index.php?action=login"  class="w-full mt-6 mr-0 mb-0 ml-0 relative space-y-8">
+                <form method="POST" action="/cabinetmedical/public/register"  class="w-full mt-6 mr-0 mb-0 ml-0 relative space-y-8">
                     <div class="relative">
                         <p class="bg-white pt-0 pr-2 pb-0 pl-2 -mt-3 mr-0 mb-0 ml-2 font-medium text-gray-600
                             absolute">Email</p>
@@ -56,7 +52,7 @@ require_once "./core/database.php";
                             rounded-lg transition duration-200 hover:bg-green-600 ease">Login</button>
                     </div>
                     <div class="relative">
-                        <p class="text-center font-medium text-gray-600">You don't have an account, <a href="index.php?action=register" class="text-green-600 font-bold">Register</a></p>
+                        <p class="text-center font-medium text-gray-600">You don't have an account, <a href="index.php?action=registerView" class="text-green-600 font-bold">Register</a></p>
                     </div>
                 </form>
 
