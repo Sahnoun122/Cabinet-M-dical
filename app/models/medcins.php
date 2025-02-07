@@ -11,7 +11,7 @@ class Medcins extends User {
         $this->db = $db;
     }
 
-    
+
 
     public function accepteRendezVous($id_rdv){
         try {
@@ -24,7 +24,7 @@ class Medcins extends User {
             return "Erreur lors de la confirmation d'Article : ". $e->getMessage();
         }
     }
-    public function refusecours( $id_cours){
+    public function refuseRendezVous( $id_cours){
         try {
             $sql = "UPDATE  id_rdv SET  Statut = 'Refusé' WHERE  id_rdv = : id_rdv";
             $stmt = $this->db->prepare($sql);

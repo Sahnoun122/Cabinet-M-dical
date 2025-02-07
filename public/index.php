@@ -35,7 +35,6 @@ if (isset($controller)) {
             $user->logincontroller();
             echo 'login';
             break;
-
             case 'loginViews':
                 require_once("C:/laragon/www/cabinetmedical/app/views/auth/connecter.php");
                 echo 'loginViews';

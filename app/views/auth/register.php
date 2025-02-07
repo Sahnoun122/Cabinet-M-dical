@@ -35,47 +35,56 @@
         <div class="w-full mt-20 mr-0 mb-0 ml-0 relative z-10 max-w-2xl lg:mt-0 lg:w-5/12">
             <div class="flex flex-col items-start justify-start pt-10 pr-10 pb-10 pl-10 bg-white shadow-2xl rounded-xl relative z-10">
 
-                <form method="POST" action="/cabinetmedical/public/register" class="w-full mt-6 mr-0 mb-0 ml-0 relative space-y-8" enctype="multipart/form-data">
-                    <!-- Name -->
-                    <div class="relative">
-                        <p class="bg-white pt-0 pr-2 pb-0 pl-2 -mt-3 mr-0 mb-0 ml-2 font-medium text-gray-600 absolute">Name</p>
-                        <input type="text" id="nom" name="nom" placeholder="nom" class="border placeholder-gray-400 focus:outline-none focus:border-black w-full pt-4 pr-4 pb-4 pl-4 mt-2 mr-0 mb-0 ml-0 text-base block bg-white border-gray-300 rounded-md"/>
-                    </div>
+            <form method="POST" action="/cabinetmedical/public/register" class="w-full mt-6 mr-0 mb-0 ml-0 relative space-y-8" enctype="multipart/form-data">
+    <!-- Name -->
+    <div class="relative">
+        <p class="bg-white pt-0 pr-2 pb-0 pl-2 -mt-3 mr-0 mb-0 ml-2 font-medium text-gray-600 absolute">Nom</p>
+        <input type="text" id="nom" name="nom" placeholder="Nom" class="border placeholder-gray-400 focus:outline-none focus:border-black w-full pt-4 pr-4 pb-4 pl-4 mt-2 mr-0 mb-0 ml-0 text-base block bg-white border-gray-300 rounded-md"/>
+    </div>
 
-                    <!-- prenom -->
-                    <div class="relative">
-                        <p class="bg-white pt-0 pr-2 pb-0 pl-2 -mt-3 mr-0 mb-0 ml-2 font-medium text-gray-600 absolute">Prenom</p>
-                        <input type="text" id="prenom" name="prenom" placeholder="prenom" class="border placeholder-gray-400 focus:outline-none focus:border-black w-full pt-4 pr-4 pb-4 pl-4 mt-2 mr-0 mb-0 ml-0 text-base block bg-white border-gray-300 rounded-md"/>
-                    </div>
+    <!-- Prenom -->
+    <div class="relative">
+        <p class="bg-white pt-0 pr-2 pb-0 pl-2 -mt-3 mr-0 mb-0 ml-2 font-medium text-gray-600 absolute">Prenom</p>
+        <input type="text" id="prenom" name="prenom" placeholder="Prenom" class="border placeholder-gray-400 focus:outline-none focus:border-black w-full pt-4 pr-4 pb-4 pl-4 mt-2 mr-0 mb-0 ml-0 text-base block bg-white border-gray-300 rounded-md"/>
+    </div>
 
-                    <!-- Email -->
-                    <div class="relative">
-                        <p class="bg-white pt-0 pr-2 pb-0 pl-2 -mt-3 mr-0 mb-0 ml-2 font-medium text-gray-600 absolute">Email</p>
-                        <input type="email" id="email" name="email" placeholder="Example123@gmail.com" class="border placeholder-gray-400 focus:outline-none focus:border-black w-full pt-4 pr-4 pb-4 pl-4 mt-2 mr-0 mb-0 ml-0 text-base block bg-white border-gray-300 rounded-md"/>
-                    </div>                
-                    <!-- Role -->
-                    <div class="relative">
-                        <p class="bg-white pt-0 pr-2 pb-0 pl-2 -mt-3 mr-0 mb-0 ml-2 font-medium text-gray-600 absolute">Role</p>
-                        <select name="role" id="role" class="border focus:outline-none focus:border-black w-full pt-4 pr-4 pb-4 pl-4 mt-2 mr-0 mb-0 ml-0 text-base block bg-white border-gray-300 rounded-md">
-                            <option value="patient" class="text-gray-400">patient</option>
-                            <option value="medecin" class="text-gray-400">medecin</option>
-                        </select>
-                    </div>                 
+    <!-- Email -->
+    <div class="relative">
+        <p class="bg-white pt-0 pr-2 pb-0 pl-2 -mt-3 mr-0 mb-0 ml-2 font-medium text-gray-600 absolute">Email</p>
+        <input type="email" id="email" name="email" placeholder="Example123@gmail.com" class="border placeholder-gray-400 focus:outline-none focus:border-black w-full pt-4 pr-4 pb-4 pl-4 mt-2 mr-0 mb-0 ml-0 text-base block bg-white border-gray-300 rounded-md"/>
+    </div>
 
-                    <div class="relative">
-                        <p class="bg-white pt-0 pr-2 pb-0 pl-2 -mt-3 mr-0 mb-0 ml-2 font-medium text-gray-600 absolute">Email</p>
-                        <input type="password" id="password" name="password" placeholder="............." class="border placeholder-gray-400 focus:outline-none focus:border-black w-full pt-4 pr-4 pb-4 pl-4 mt-2 mr-0 mb-0 ml-0 text-base block bg-white border-gray-300 rounded-md"/>
-                    </div>
-                    <div class="relative">
-                        <button type="submit" name="submit" class="w-full inline-block pt-4 pr-5 pb-4 pl-5 text-xl font-medium text-center text-white bg-green-500
-                        rounded-lg transition duration-200 hover:bg-green-600 ease">Register</button>
-                    </div>
+    <!-- Role -->
+    <div class="relative">
+        <p class="bg-white pt-0 pr-2 pb-0 pl-2 -mt-3 mr-0 mb-0 ml-2 font-medium text-gray-600 absolute">Role</p>
+        <select name="role" id="role" class="border focus:outline-none focus:border-black w-full pt-4 pr-4 pb-4 pl-4 mt-2 mr-0 mb-0 ml-0 text-base block bg-white border-gray-300 rounded-md" onchange="toggleSpecialiteField()">
+            <option value="patient" class="text-gray-400">Patient</option>
+            <option value="medecin" class="text-gray-400">Medecin</option>
+        </select>
+    </div>
 
-                    <div class="relative">
-                        <p class="text-center font-medium text-gray-600">Already have an account, <a href="index.php?action=loginViews"  class="text-green-600 font-bold">Login</a></p>
-                    </div>
+    <!-- Specialité (hidden by default) -->
+    <div class="relative" id="specialite-field" style="display: none;">
+        <p class="bg-white pt-0 pr-2 pb-0 pl-2 -mt-3 mr-0 mb-0 ml-2 font-medium text-gray-600 absolute">Specialité</p>
+        <input type="text" id="specialite" name="specialite" placeholder="Specialité" class="border placeholder-gray-400 focus:outline-none focus:border-black w-full pt-4 pr-4 pb-4 pl-4 mt-2 mr-0 mb-0 ml-0 text-base block bg-white border-gray-300 rounded-md"/>
+    </div>
 
-                </form>
+    <!-- Password -->
+    <div class="relative">
+        <p class="bg-white pt-0 pr-2 pb-0 pl-2 -mt-3 mr-0 mb-0 ml-2 font-medium text-gray-600 absolute">Password</p>
+        <input type="password" id="password" name="password" placeholder="............." class="border placeholder-gray-400 focus:outline-none focus:border-black w-full pt-4 pr-4 pb-4 pl-4 mt-2 mr-0 mb-0 ml-0 text-base block bg-white border-gray-300 rounded-md"/>
+    </div>
+
+    <div class="relative">
+        <button type="submit" name="submit" class="w-full inline-block pt-4 pr-5 pb-4 pl-5 text-xl font-medium text-center text-white bg-green-500 rounded-lg transition duration-200 hover:bg-green-600 ease">Register</button>
+    </div>
+
+    <div class="relative">
+        <p class="text-center font-medium text-gray-600">Already have an account? <a href="index.php?action=loginViews" class="text-green-600 font-bold">Login</a></p>
+    </div>
+</form>
+
+
             </div>
         </div>
     </div>
@@ -83,6 +92,18 @@
 
 
 <script>
+
+
+function toggleSpecialiteField() {
+    var roleSelect = document.getElementById("role");
+    var specialiteField = document.getElementById("specialite-field");
+    if (roleSelect.value === "medecin") {
+        specialiteField.style.display = "block";
+    } else {
+        specialiteField.style.display = "none";
+    }
+}
+
 
 function validateForm() {
     let nom = document.getElementById("nom").value;
