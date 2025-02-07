@@ -26,7 +26,7 @@ class Router {
             $controller = $this->controllers[$controllerName];
             $validActions = ['register', 'login', 'rendezVousMedcins'];
             if (method_exists($controller, $action) && in_array($action, $validActions)) {
-                $controller->$action($_GET["action"]);
+                return $controller->$action($_GET["action"]);
             } else {
                 return $controller->defaultAction(); // Action par défaut 
             }

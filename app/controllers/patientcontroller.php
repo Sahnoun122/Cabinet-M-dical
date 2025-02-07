@@ -10,6 +10,10 @@ class PatientController{
         $this->user = new Patient($db);
     }
 
+
+     public function PrenRendezVous(){
+          
+     }
   
     
 }

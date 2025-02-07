@@ -16,7 +16,7 @@ $route = new Router($db);
 $url = trim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), '/');
 $segments = explode('/', $url);
 $controller = $segments[2];
-echo $controller;
+// echo $controller;
 $lastSegment = end($segments);
 
 if (isset($controller)) {
@@ -43,13 +43,10 @@ if (isset($controller)) {
      
             case 'rendezVousMedcins':
                     $user = new MedcinsController ($db);
-                    $user->InfoMedcinsController();
-                    echo 'dashbordPatients';
+                    echo $user->InfoMedcinsController();
+                
                     break;
-            case 'dashbordPatients':
-                require_once __DIR__ . '/../app/views/patients/dashbordpatients.php';
-              echo 'rendezVousMedcins';
-                        break;
+    
     }
 }
 

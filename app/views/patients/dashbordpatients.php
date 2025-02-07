@@ -67,7 +67,7 @@
 </aside>
 
 <div class="flex-1 ml-0 sm:ml-80 p-8">
-    <h2 class="text-4xl font-semibold text-black mb-10">Find & Book your Activity</h2>
+    <h2 class="text-4xl font-semibold text-black mb-10">les medcins avec leur Specialité</h2>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4" style="align-items: start;">
         <?php foreach(  $medcinss as  $medcins): ?>
