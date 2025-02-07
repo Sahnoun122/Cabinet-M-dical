@@ -1,6 +1,8 @@
 <?php 
 
 require_once '../app/controllers/authcontroller.php';
+require_once '../app/controllers/medcinscontroller.php';
+
 
 
 $dsn = 'mysql:host=localhost;dbname=your_database';
@@ -12,25 +14,32 @@ $db = $dbConnection->getConnection();
 $user = new User($db);
 
 class Router {
-    private $controller;
+    private $controllers = [];
 
     public function __construct($db) {
-        $this->controller = new Usercontroller($db);
+        $this->controllers['user'] = new UserController($db);
+        $this->controllers['medcins'] = new MedcinsController($db);
     }
 
-    public function runAction($action) {    
-        $validActions = ['register', 'login']; 
-        if (in_array($action, $validActions)) {
-            $this->controller->$action($_GET["action"]);
+    public function runAction($controllerName, $action) {
+        if (isset($this->controllers[$controllerName])) {
+            $controller = $this->controllers[$controllerName];
+            $validActions = ['register', 'login', 'rendezVousMedcins'];
+            if (method_exists($controller, $action) && in_array($action, $validActions)) {
+                $controller->$action($_GET["action"]);
+            } else {
+                return $controller->defaultAction(); // Action par défaut 
+            }
         } else {
-            return $this->controller->registercontroller();  
+            throw new Exception("Controller not found.");
         }
     }
 
-    public function getAction($action) {
-        $result = $this->runAction($action);
+    public function getAction($controllerName, $action) {
+        $this->runAction($controllerName, $action);
     }
 }
+
 
 
 

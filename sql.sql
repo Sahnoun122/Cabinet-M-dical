@@ -11,11 +11,12 @@ CREATE TABLE rendez_vous (
 
 
 
-CREATE TABLE utilisateurs (
+CREATE TABLE users (
     id_user SERIAL PRIMARY KEY,
     Nom VARCHAR(255) NOT NULL,
     Prenom VARCHAR(255) NOT NULL,
     email VARCHAR(255) UNIQUE NOT NULL,
+    specialite VARCHAR(50) ,
     Password VARCHAR(255) NOT NULL,
     role VARCHAR(50) NOT NULL CHECK (role IN ('patient', 'medecin'))
 );

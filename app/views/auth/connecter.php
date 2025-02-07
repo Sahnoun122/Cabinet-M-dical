@@ -52,7 +52,7 @@
                             rounded-lg transition duration-200 hover:bg-green-600 ease">Login</button>
                     </div>
                     <div class="relative">
-                        <p class="text-center font-medium text-gray-600">You don't have an account, <a href="index.php?action=registerView" class="text-green-600 font-bold">Register</a></p>
+                        <p class="text-center font-medium text-gray-600">You don't have an account, <a href="registerView" class="text-green-600 font-bold">Register</a></p>
                     </div>
                 </form>
 

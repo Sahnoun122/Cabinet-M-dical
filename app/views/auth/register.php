@@ -80,7 +80,7 @@
     </div>
 
     <div class="relative">
-        <p class="text-center font-medium text-gray-600">Already have an account? <a href="index.php?action=loginViews" class="text-green-600 font-bold">Login</a></p>
+        <p class="text-center font-medium text-gray-600">Already have an account? <a href="loginViews" class="text-green-600 font-bold">Login</a></p>
     </div>
 </form>
 

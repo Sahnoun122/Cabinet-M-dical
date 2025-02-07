@@ -35,10 +35,21 @@ if (isset($controller)) {
             $user->logincontroller();
             echo 'login';
             break;
+
             case 'loginViews':
-                require_once("C:/laragon/www/cabinetmedical/app/views/auth/connecter.php");
+                require_once "../views/auth/connecter.php";
                 echo 'loginViews';
                 break;
+     
+            case 'rendezVousMedcins':
+                    $user = new MedcinsController ($db);
+                    $user->InfoMedcinsController();
+                    echo 'dashbordPatients';
+                    break;
+            case 'dashbordPatients':
+                require_once __DIR__ . '/../app/views/patients/dashbordpatients.php';
+              echo 'rendezVousMedcins';
+                        break;
     }
 }
 
