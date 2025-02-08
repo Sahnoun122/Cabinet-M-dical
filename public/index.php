@@ -46,7 +46,13 @@ if (isset($controller)) {
                     echo $user->InfoMedcinsController();
                 
                     break;
-    
+               
+            case 'rendezVousMedcins':
+                $user = new  PatientController($db);
+                echo $user-> RendezVousController();
+            
+                break;
+
     }
 }
 

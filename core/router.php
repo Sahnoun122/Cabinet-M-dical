@@ -2,6 +2,8 @@
 
 require_once '../app/controllers/authcontroller.php';
 require_once '../app/controllers/medcinscontroller.php';
+require_once '../app/controllers/patientcontroller.php';
+
 
 
 
@@ -19,6 +21,8 @@ class Router {
     public function __construct($db) {
         $this->controllers['user'] = new UserController($db);
         $this->controllers['medcins'] = new MedcinsController($db);
+        $this->controllers['patients'] = new PatientController($db);
+
     }
 
     public function runAction($controllerName, $action) {
