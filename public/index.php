@@ -9,7 +9,6 @@ session_start();
 
   require_once '../app/controllers/rendezvouscontroller.php';
   require_once '../app/controllers/authcontroller.php';
-  require_once '../app/controllers/authcontroller.php';
 
 
 // Assuming you have already set up your PDO connection
@@ -42,12 +41,17 @@ if (isset($controller)) {
         case 'rendezVousMedcins':
             $user = new PatientController ($db);
             echo $user->InfoMedcinsController();
-            break;
+            break;  
         case 'rendezVous':
             $user = new PatientController($db);
             echo $user->RendezVousController();
             break;
-    }
+    
+    case 'voirStatistique':
+        $user = new MedcinsController($db);
+        echo $user->voirStatistiqueController();
+        break;
+}
 }
 
 ?>
