@@ -72,27 +72,30 @@ echo $_SESSION['id_user'];
 ?>
 </h2>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4" style="align-items: start;">
-        <?php foreach(  $medcinss as  $medcins): ?>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4" style="align-items: start;">
+    <?php if (isset($medcinss) && is_array($medcinss)): ?>
+        <?php foreach($medcinss as $medcins): ?>
             <div class="bg-black shadow-lg rounded-lg overflow-hidden" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
-            <h3 class="text-4xl mb-4 font-semibold text-white"><?php echo $medcins['nom']; ?></h3>
+                <h3 class="text-4xl mb-4 font-semibold text-white"><?php echo $medcins['nom']; ?></h3>
                 <div class="p-6">
                     <h6 class="text-4xl mb-4 font-semibold text-white"><?php echo $medcins['prenom']; ?></h6>
                     <p class="text-lg text-white"><?php echo $medcins['specialite']; ?></p>
 
-            <form method="POST" action="/cabinetmedical/public/rendezVous" class="mt-4">
-                    <input type="hidden" name="id_rdv" value="<?php echo $medcins['id_rdv']; ?>">
-                    <div class="flex items-center space-x-4">
-                        <input type="datetime-local" name="reservation_date" required class="p-2 border border-gray-300 rounded-md w-full">
-                        <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700">Rendez-vous</button>
-                    </div>
-            </form>
-
-
+                    <form method="POST" action="/cabinetmedical/public/rendezVous" class="mt-4">
+                        <input type="hidden" name="id_rdv" value="<?php echo isset($medcins['id_rdv']) ? $medcins['id_rdv'] : ''; ?>">
+                        <div class="flex items-center space-x-4">
+                            <input type="datetime-local" name="reservation_date" required class="p-2 border border-gray-300 rounded-md w-full">
+                            <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700">Rendez-vous</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         <?php endforeach; ?>
-    </div>
+    <?php else: ?>
+        <p class="text-white">No doctors available.</p>
+    <?php endif; ?>
+</div>
+
 </div>
 
 <script>

@@ -12,13 +12,6 @@ class Medcins extends User {
         $this->db = $db;
     }
 
-    public function getMedcins() {
-        $sql = "SELECT nom, prenom, specialite FROM users WHERE role = 'medecin'";
-        $stmt = $this->db->prepare($sql);
-        $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
-    }
-    
     public function accepteRendezVous($id_rdv){
         try {
             $sql = "UPDATE  rendez_vous  SET  Statut = 'Accepté' WHERE  id_rdv = : id_rdv";

@@ -1,5 +1,6 @@
 <?php
 
+
 include_once 'C:/laragon/www/cabinetmedical/app/models/patients.php';
 include_once 'C:/laragon/www/cabinetmedical/core/database.php';
 
@@ -8,6 +9,11 @@ class PatientController {
 
     public function __construct($db) {
         $this->user = new Patient($db);
+    }
+
+    public function InfoMedcinsController() {
+        $medcinss = $this->user->getMedcins(); // Fetch doctors from the database
+        require_once __DIR__ . '/../views/patients/dashbordpatients.php';
     }
 
     public function RendezVousController() {
@@ -22,11 +28,7 @@ class PatientController {
             } catch (Exception $e) {
                 echo "Erreur : " . $e->getMessage();
             }
-
-            ob_start();
-            require_once __DIR__ . '/../views/patients/dashbordpatients.php';
-            return ob_get_clean();
         }
     }
 }
-?>
+

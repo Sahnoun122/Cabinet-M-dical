@@ -10,12 +10,12 @@ class MedcinsController{
         $this->user = new Medcins($db);
     }
 
-  public function InfoMedcinsController(){
-    $medcinss = $this->user->getMedcins();
-    ob_start();
-    require_once __DIR__ . '/../views/patients/dashbordpatients.php';
-    return ob_get_clean();
-  }
+//   public function InfoMedcinsController(){
+//     $medcinss = $this->user->getMedcins();
+//     ob_start();
+//     require_once __DIR__ . '/../views/patients/dashbordpatients.php';
+//     return ob_get_clean();
+//   }
     
 }
 

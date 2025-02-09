@@ -43,7 +43,7 @@ if (isset($controller)) {
                 break;
      
             case 'rendezVousMedcins':
-                    $user = new MedcinsController ($db);
+                    $user = new PatientController ($db);
                     echo $user->InfoMedcinsController();
                 
                     break;
