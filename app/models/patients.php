@@ -24,15 +24,15 @@ class Patient extends User{
     
 
   public function PrendreRendezVous($id_medcins, $date_rendezVous) {
-    if (!is_numeric($_SESSION['id_user']) || !is_numeric($id_medcins)) {
+    if (!is_numeric($_SESSION['id_patients']) || !is_numeric($id_medcins)) {
         throw new Exception("Invalid ID format");
     }
 
     $sql = "INSERT INTO rendez_vous (id_patients, id_medcins, Statut, date_creation) 
-            VALUES (:id_user, :id_medcins, :Statut, :date_creation)";
+            VALUES (:id_patients, :id_medcins, :Statut, :date_creation)";
     $stmt = $this->db->prepare($sql);
     $stmt->execute([
-        ':id_user' => (int)$_SESSION['id_user'], 
+        ':id_patients' => (int)$_SESSION['id_user'], 
         ':id_medcins' => (int)$id_medcins, 
         ':Statut' => 'Soumis',
         ':date_creation' => $date_rendezVous

@@ -1,5 +1,6 @@
 <?php 
 session_start();
+
   require_once '../core/router.php';
 
   require_once '../app/controllers/medcinscontroller.php';
@@ -12,12 +13,10 @@ session_start();
 
 
 // Assuming you have already set up your PDO connection
-
 $route = new Router($db);
 $url = trim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), '/');
 $segments = explode('/', $url);
 $controller = $segments[2];
-// echo $controller;
 $lastSegment = end($segments);
 
 if (isset($controller)) {
@@ -36,25 +35,20 @@ if (isset($controller)) {
             $user->logincontroller();
             echo 'login';
             break;
-
-            case 'loginViews':
-                require_once "C:/laragon/www/cabinetmedical/app/views/auth/connecter.php";
-                echo 'loginViews';
-                break;
-     
-            case 'rendezVousMedcins':
-                    $user = new PatientController ($db);
-                    echo $user->InfoMedcinsController();
-                
-                    break;
-               
-            case 'rendezVous':
-                $user = new  PatientController($db);
-                echo $user-> RendezVousController();
-            
-                break;
-
+        case 'loginViews':
+            require_once "C:/laragon/www/cabinetmedical/app/views/auth/connecter.php";
+            echo 'loginViews';
+            break;
+        case 'rendezVousMedcins':
+            $user = new PatientController ($db);
+            echo $user->InfoMedcinsController();
+            break;
+        case 'rendezVous':
+            $user = new PatientController($db);
+            echo $user->RendezVousController();
+            break;
     }
 }
+
 
 ?>

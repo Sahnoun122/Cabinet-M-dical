@@ -18,11 +18,15 @@ class PatientController {
 
     public function RendezVousController() {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $id_medcins = $_POST['id_rdv'];
+            $id_patients = isset($_POST['id_patients']) ? $_POST['id_patients'] : null;
             $reservation_date = $_POST['reservation_date'];
-
+    
+            if ($id_patients === null) {
+                throw new Exception("Patient ID not provided");
+            }
+    
             try {
-                $this->user->PrendreRendezVous($id_medcins, $reservation_date);
+                $this->user->PrendreRendezVous($id_patients, $reservation_date);
                 header('Location:rendezVousMedcins');
                 exit();
             } catch (Exception $e) {
@@ -30,5 +34,6 @@ class PatientController {
             }
         }
     }
+    
 }
 

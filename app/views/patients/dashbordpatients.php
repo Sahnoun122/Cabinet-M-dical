@@ -82,8 +82,8 @@ echo $_SESSION['id_user'];
                     <p class="text-lg text-white"><?php echo $medcins['specialite']; ?></p>
 
                     <form method="POST" action="/cabinetmedical/public/rendezVous" class="mt-4">
-                        <input type="hidden" name="id_rdv" value="<?php echo isset($medcins['id_rdv']) ? $medcins['id_rdv'] : ''; ?>">
-                        <div class="flex items-center space-x-4">
+                    <input type="hidden" name="id_patients" value="<?php echo isset($medcins['id_patients']) ? $medcins['id_patients'] : ''; ?>">
+                    <div class="flex items-center space-x-4">
                             <input type="datetime-local" name="reservation_date" required class="p-2 border border-gray-300 rounded-md w-full">
                             <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700">Rendez-vous</button>
                         </div>
