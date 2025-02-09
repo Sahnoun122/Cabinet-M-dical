@@ -1,4 +1,5 @@
 <?php 
+session_start();
   require_once '../core/router.php';
 
   require_once '../app/controllers/medcinscontroller.php';
@@ -37,7 +38,7 @@ if (isset($controller)) {
             break;
 
             case 'loginViews':
-                require_once "../views/auth/connecter.php";
+                require_once "C:/laragon/www/cabinetmedical/app/views/auth/connecter.php";
                 echo 'loginViews';
                 break;
      
@@ -47,7 +48,7 @@ if (isset($controller)) {
                 
                     break;
                
-            case 'rendezVousMedcins':
+            case 'rendezVous':
                 $user = new  PatientController($db);
                 echo $user-> RendezVousController();
             

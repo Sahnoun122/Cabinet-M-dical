@@ -49,7 +49,7 @@ class Usercontroller {
                     $_SESSION['role'] = $user['role'];
     
                     if ($user['role'] === 'patient') {
-                        header('Location:app/views/patients/dashbordpatients.php');
+                        header('Location:rendezVousMedcins');
                     } else if ($user['role'] === 'medecin') {
                         header('Location:app/views/medcins/dashbordmedcins.php');
                     }

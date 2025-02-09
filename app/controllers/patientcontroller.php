@@ -17,7 +17,7 @@ class PatientController {
 
             try {
                 $this->user->PrendreRendezVous($id_medcins, $reservation_date);
-                header('Location: rendezVousMedcins');
+                header('Location:rendezVousMedcins');
                 exit();
             } catch (Exception $e) {
                 echo "Erreur : " . $e->getMessage();

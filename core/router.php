@@ -28,7 +28,7 @@ class Router {
     public function runAction($controllerName, $action) {
         if (isset($this->controllers[$controllerName])) {
             $controller = $this->controllers[$controllerName];
-            $validActions = ['register', 'login', 'rendezVousMedcins'];
+            $validActions = ['register', 'login', 'rendezVousMedcins' , 'rendezVous'];
             if (method_exists($controller, $action) && in_array($action, $validActions)) {
                 return $controller->$action($_GET["action"]);
             } else {
