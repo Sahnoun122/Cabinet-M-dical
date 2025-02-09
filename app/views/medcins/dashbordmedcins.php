@@ -74,7 +74,7 @@
             <thead class="bg-black">
                 <tr>
                     <th class="px-6 py-3 text-left text-sm font-medium text-white">Member</th>
-                    <th class="px-6 py-3 text-left text-sm font-medium text-white">Activity</th>
+                    <th class="px-6 py-3 text-left text-sm font-medium text-white">nom</th>
                     <th class="px-6 py-3 text-left text-sm font-medium text-white">Reservation Date</th>
                     <th class="px-6 py-3 text-left text-sm font-medium text-white">Status</th>
                     <th class="px-6 py-3 text-left text-sm font-medium text-white">Actions</th>
@@ -88,10 +88,10 @@
                         <td class="px-6 py-4 text-sm"><?php echo $reservation['ResDate']; ?></td>
                         <td class="px-6 py-4 text-sm"><?php echo $reservation['Status']; ?></td>
                         <td class="px-6 py-4">
-                            <form method="POST" action="" class="flex space-x-2">
-                                <input type="hidden" name="reservation_id" value="<?php echo $reservation['ResID']; ?>">
+                        <form method="POST" action="/cabinetmedical/public/accepterRefuser" class="flex space-x-2">
+                                <input type="hidden" name="id_cours" value="<?php echo $cours['id_cours']; ?>">
                                 <button name="action" value="accept" class="text-xl hover:scale-105">✅</button>
-                                <button name="action" value="reject" class="text-xl hover:scale-105">❌</button>
+                                <button name="actions" value="reject" class="text-xl hover:scale-105">❌</button>
                             </form>
                         </td>
                     </tr>

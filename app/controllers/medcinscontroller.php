@@ -10,12 +10,33 @@ class MedcinsController{
         $this->user = new Medcins($db);
     }
 
-//   public function InfoMedcinsController(){
-//     $medcinss = $this->user->getMedcins();
-//     ob_start();
-//     require_once __DIR__ . '/../views/patients/dashbordpatients.php';
-//     return ob_get_clean();
-//   }
+
+    
+     
+
+public function accepterRendezvousController(){
+    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id_cours'], $_POST['action'])) {
+        $id_cours = $_POST['id_cours'];
+        $action = $_POST['action'];
+        $admin ->acceptercours($id_cours);
+        $_SESSION['message'] = "cours has been updated.";
+        header("Location:../views/dashbordadmin.php");
+        exit;
+    }
+    
+}
+
+public function refuseRendezvousController(){
+    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id_cours'], $_POST['actions'])) {
+        $id_cours = $_POST['id_cours'];
+        $action = $_POST['actions'];
+        $admin ->refusecours( $id_cours);
+        $_SESSION['message'] = "cours has been rejecte.";
+    
+        header("Location:../views/dashbordadmin.php");
+        exit;
+    }
+}
     
 }
 

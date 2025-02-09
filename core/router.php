@@ -23,12 +23,13 @@ class Router {
         $this->controllers['medcins'] = new MedcinsController($db);
         $this->controllers['patients'] = new PatientController($db);
 
+
     }
 
     public function runAction($controllerName, $action) {
         if (isset($this->controllers[$controllerName])) {
             $controller = $this->controllers[$controllerName];
-            $validActions = ['register', 'login', 'rendezVousMedcins' , 'rendezVous'];
+            $validActions = ['register', 'login', 'rendezVousMedcins' , 'rendezVous' ,'accepterRefuser'];
             if (method_exists($controller, $action) && in_array($action, $validActions)) {
                 return $controller->$action($_GET["action"]);
             } else {
